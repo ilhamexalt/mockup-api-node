@@ -1,18 +1,30 @@
 import express, { Request, Response } from "express";
-import { users } from "../src/data/users";
-import { User } from "../src/types/user";
+import { users } from "../data/users";
+import { User } from "../types/user"
 
 const router = express.Router();
 
 // GET all
 router.get("/", (req: Request, res: Response) => {
-    res.json(users);
+    res.json({
+        transactionId: '0f06b466-99dd-4f59-a5df-1ad9f2a84d0a',
+        code: '',
+        message: 'OK',
+        eTag: 'pfmKgK6RpIkgkAAYukTfo21KRTyCwpiA',
+        data: users
+    });
 });
 
 // GET by ID
 router.get("/:id", (req: Request, res: Response) => {
     const user = users.find(u => u.id === parseInt(req.params.id));
-    user ? res.json(user) : res.status(404).json({ message: "User not found" });
+    user ? res.json({
+        transactionId: '0f06b466-99dd-4f59-a5df-1ad9f2a84d0a',
+        code: '',
+        message: 'OK',
+        eTag: 'pfmKgK6RpIkgkAAYukTfo21KRTyCwpiA',
+        data: [user]
+    }) : res.status(404).json({ message: "User not found" });
 });
 
 // POST
