@@ -1,6 +1,6 @@
 import express, { Request, Response } from "express";
-import { users } from "../data/users";
-import { User } from "../types/user";
+import { users } from "../src/data/users";
+import { User } from "../src/types/user";
 
 const router = express.Router();
 
